@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Akshat — CSE Student & Music Enthusiast</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="The personal website of Akshat — CSE student, builder, music enthusiast and curious mind based in Noida.">
+          content="Akshat — CSE student, builder and music enthusiast from Noida.">
+
+    <title>Akshat — CSE Student & Music</title>
+
+
+    <!-- =========================
+         CSS
+    ========================== -->
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -17,548 +27,1182 @@
             scroll-behavior: smooth;
         }
 
+
         :root {
-            --bg: #07070a;
+
+            --background: #050507;
             --card: rgba(255,255,255,0.055);
-            --border: rgba(255,255,255,0.1);
+
+            --border: rgba(255,255,255,0.11);
+
             --text: #f5f5f5;
             --muted: #999;
-            --accent: #8b5cf6;
-            --accent2: #06b6d4;
+
+            --purple: #8b5cf6;
+            --blue: #06b6d4;
+
         }
+
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--background);
+
             color: var(--text);
+
             overflow-x: hidden;
+
         }
 
-        /* ---------------- BACKGROUND ---------------- */
+
+        /* =========================
+           BACKGROUND GLOW
+        ========================== */
 
         body::before {
+
             content: "";
+
             position: fixed;
+
             width: 600px;
             height: 600px;
+
             background: #7c3aed;
+
             filter: blur(180px);
-            opacity: 0.13;
+
+            opacity: 0.15;
+
             top: -250px;
             left: -200px;
+
             pointer-events: none;
-            z-index: -2;
+
+            z-index: -3;
+
         }
+
 
         body::after {
+
             content: "";
+
             position: fixed;
+
             width: 500px;
             height: 500px;
+
             background: #06b6d4;
+
             filter: blur(180px);
-            opacity: 0.08;
-            bottom: -250px;
-            right: -150px;
+
+            opacity: 0.10;
+
+            right: -200px;
+            bottom: -200px;
+
             pointer-events: none;
-            z-index: -2;
+
+            z-index: -3;
+
         }
+
+
+        /* =========================
+           MOUSE GLOW
+        ========================== */
 
         #cursorGlow {
+
             position: fixed;
-            width: 300px;
-            height: 300px;
+
+            width: 350px;
+            height: 350px;
+
             border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(139,92,246,0.13),
-                transparent 65%
-            );
-            transform: translate(-50%, -50%);
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(139,92,246,0.16),
+                    transparent 65%
+                );
+
+            transform:
+                translate(-50%, -50%);
+
             pointer-events: none;
+
             z-index: -1;
+
         }
 
-        /* ---------------- NAVBAR ---------------- */
+
+        /* =========================
+           NAVBAR
+        ========================== */
 
         nav {
+
             position: fixed;
+
             top: 20px;
+
             left: 50%;
-            transform: translateX(-50%);
-            width: min(900px, 92%);
-            padding: 12px 18px;
+
+            transform:
+                translateX(-50%);
+
+            width: min(950px, 92%);
+
+            padding: 13px 20px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
-            background: rgba(10,10,14,0.72);
-            backdrop-filter: blur(18px);
-            border: 1px solid var(--border);
+            background:
+                rgba(8,8,12,0.72);
+
+            backdrop-filter:
+                blur(20px);
+
+            border:
+                1px solid var(--border);
+
             border-radius: 18px;
 
             z-index: 100;
+
         }
+
 
         .logo {
-            font-size: 20px;
+
+            font-size: 21px;
+
             font-weight: 800;
+
         }
+
 
         .logo span {
-            color: var(--accent);
+
+            color: var(--purple);
+
         }
+
 
         nav ul {
+
             display: flex;
+
             list-style: none;
-            gap: 25px;
+
+            gap: 28px;
+
         }
+
 
         nav a {
+
             color: #aaa;
+
             text-decoration: none;
+
             font-size: 14px;
-            transition: 0.25s;
+
+            transition: 0.3s;
+
         }
+
 
         nav a:hover {
+
             color: white;
+
         }
+
 
         .status {
+
+            color: #999;
+
             font-size: 12px;
-            color: #9ca3af;
+
         }
+
 
         .dot {
+
             display: inline-block;
+
             width: 7px;
+
             height: 7px;
+
             background: #22c55e;
+
             border-radius: 50%;
+
             margin-right: 5px;
-            box-shadow: 0 0 10px #22c55e;
+
+            box-shadow:
+                0 0 12px #22c55e;
+
         }
 
-        /* ---------------- HERO ---------------- */
+
+        /* =========================
+           HERO
+        ========================== */
 
         .hero {
+
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             text-align: center;
-            padding: 120px 20px 80px;
+
+            padding:
+                130px 20px 80px;
+
         }
+
 
         .hero-content {
-            max-width: 900px;
+
+            max-width: 950px;
+
         }
+
 
         .badge {
+
             display: inline-block;
-            padding: 8px 15px;
-            border: 1px solid var(--border);
+
+            padding:
+                8px 16px;
+
+            border:
+                1px solid var(--border);
+
             border-radius: 50px;
-            background: rgba(255,255,255,0.04);
-            color: #bbb;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #aaa;
+
             font-size: 13px;
-            margin-bottom: 25px;
+
+            margin-bottom: 30px;
+
         }
+
 
         .hero h1 {
-            font-size: clamp(55px, 10vw, 120px);
-            line-height: 0.95;
-            letter-spacing: -6px;
-            margin-bottom: 25px;
+
+            font-size:
+                clamp(60px, 11vw, 130px);
+
+            line-height: 0.9;
+
+            letter-spacing:
+                -7px;
+
+            margin-bottom: 30px;
+
         }
+
 
         .gradient {
-            background: linear-gradient(
-                90deg,
-                #fff,
-                #a78bfa,
-                #22d3ee
-            );
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #a78bfa,
+                    #22d3ee
+                );
 
             -webkit-background-clip: text;
+
             background-clip: text;
+
             color: transparent;
+
         }
+
 
         .hero p {
+
             max-width: 650px;
+
             margin: auto;
+
             color: var(--muted);
+
             font-size: 18px;
-            line-height: 1.7;
+
+            line-height: 1.8;
+
         }
+
 
         .buttons {
+
             margin-top: 35px;
+
             display: flex;
+
             justify-content: center;
+
             gap: 12px;
+
             flex-wrap: wrap;
+
         }
+
 
         .btn {
-            padding: 14px 22px;
+
+            padding:
+                14px 22px;
+
+            border:
+                1px solid var(--border);
+
             border-radius: 12px;
+
             text-decoration: none;
+
             color: white;
+
             font-size: 14px;
-            border: 1px solid var(--border);
+
             transition: 0.3s;
+
         }
+
 
         .btn-primary {
+
             background: white;
+
             color: black;
-            font-weight: 700;
+
+            font-weight: bold;
+
         }
+
 
         .btn:hover {
-            transform: translateY(-3px);
-            border-color: #777;
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(255,255,255,0.4);
+
         }
+
 
         .scroll {
+
             margin-top: 70px;
+
             color: #666;
+
             font-size: 12px;
-            animation: float 2s infinite ease-in-out;
+
+            animation:
+                float 2s infinite;
+
         }
+
 
         @keyframes float {
+
             50% {
-                transform: translateY(7px);
+
+                transform:
+                    translateY(8px);
+
             }
+
         }
 
-        /* ---------------- GENERAL ---------------- */
+
+        /* =========================
+           SECTIONS
+        ========================== */
 
         section {
-            width: min(1050px, 90%);
+
+            width:
+                min(1050px, 90%);
+
             margin: auto;
-            padding: 110px 0;
+
+            padding:
+                110px 0;
+
         }
+
 
         .section-label {
-            color: var(--accent2);
+
+            color:
+                var(--blue);
+
             font-size: 12px;
-            text-transform: uppercase;
+
+            text-transform:
+                uppercase;
+
             letter-spacing: 3px;
+
             margin-bottom: 15px;
+
         }
+
 
         h2 {
-            font-size: clamp(35px, 5vw, 55px);
-            letter-spacing: -2px;
+
+            font-size:
+                clamp(38px, 6vw, 60px);
+
+            letter-spacing:
+                -3px;
+
             margin-bottom: 45px;
+
         }
 
-        /* ---------------- ABOUT ---------------- */
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 25px;
-        }
+        /* =========================
+           CARDS
+        ========================== */
 
         .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 30px;
-            backdrop-filter: blur(15px);
-            transition: 0.3s;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                24px;
+
+            padding:
+                30px;
+
+            backdrop-filter:
+                blur(15px);
+
+            transition:
+                0.35s;
+
         }
+
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255,255,255,0.2);
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(255,255,255,0.25);
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.3);
+
         }
 
-        .card p {
-            color: #aaa;
-            line-height: 1.8;
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr 0.7fr;
+
+            gap: 20px;
+
         }
+
+
+        .about-text {
+
+            color: #aaa;
+
+            line-height: 1.9;
+
+            font-size: 16px;
+
+        }
+
 
         .big-number {
-            font-size: 70px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff, #8b5cf6);
+
+            font-size: 90px;
+
+            font-weight: 900;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    white,
+                    var(--purple)
+                );
+
             -webkit-background-clip: text;
+
             background-clip: text;
+
             color: transparent;
+
         }
 
-        /* ---------------- SKILLS ---------------- */
+
+        /* =========================
+           SKILLS
+        ========================== */
 
         .skills {
+
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
+
         }
+
 
         .skill {
-            padding: 10px 15px;
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            color: #bbb;
-            background: rgba(255,255,255,0.03);
-            transition: 0.25s;
+
+            padding:
+                11px 17px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color: #aaa;
+
+            transition:
+                0.3s;
+
         }
+
 
         .skill:hover {
+
             color: white;
-            border-color: var(--accent);
-            transform: scale(1.05);
+
+            border-color:
+                var(--purple);
+
+            transform:
+                scale(1.06);
+
+            box-shadow:
+                0 0 25px
+                rgba(139,92,246,0.18);
+
         }
 
-        /* ---------------- PROJECTS ---------------- */
+
+        /* =========================
+           PROJECTS
+        ========================== */
 
         .projects {
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 18px;
+
         }
+
 
         .project-number {
-            color: #666;
-            font-size: 13px;
-            margin-bottom: 30px;
+
+            color: #555;
+
+            font-size: 12px;
+
+            margin-bottom: 35px;
+
         }
+
 
         .project h3 {
+
             font-size: 23px;
-            margin-bottom: 12px;
+
+            margin-bottom: 15px;
+
         }
+
 
         .project p {
+
+            color: #999;
+
+            line-height: 1.7;
+
             font-size: 14px;
+
             margin-bottom: 25px;
+
         }
+
 
         .project-tag {
-            color: #a78bfa;
+
+            color:
+                #a78bfa;
+
             font-size: 12px;
+
         }
 
-        /* ---------------- MUSIC ---------------- */
 
-        .music-box {
+        /* =========================
+           MUSIC
+        ========================== */
+
+        .music-grid {
+
             display: grid;
-            grid-template-columns: 1fr 1fr;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 20px;
+
         }
 
-        .music-card {
-            min-height: 250px;
-            position: relative;
-            overflow: hidden;
-        }
 
         .music-icon {
+
             font-size: 55px;
+
             margin-bottom: 25px;
+
         }
+
+
+        .music-card h3 {
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .music-card p {
+
+            color: #999;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* MUSIC BARS */
 
         .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+
             display: flex;
-            gap: 5px;
+
             align-items: end;
-            height: 50px;
-            opacity: 0.35;
+
+            gap: 5px;
+
+            height: 55px;
+
+            margin-top: 30px;
+
         }
+
 
         .wave span {
-            width: 5px;
-            background: linear-gradient(#8b5cf6, #06b6d4);
-            border-radius: 5px;
-            animation: wave 1s infinite alternate;
+
+            width: 6px;
+
+            border-radius: 10px;
+
+            background:
+
+                linear-gradient(
+                    #8b5cf6,
+                    #06b6d4
+                );
+
+            animation:
+                wave 1s infinite alternate;
+
         }
 
-        .wave span:nth-child(2) { animation-delay: .1s; }
-        .wave span:nth-child(3) { animation-delay: .2s; }
-        .wave span:nth-child(4) { animation-delay: .3s; }
-        .wave span:nth-child(5) { animation-delay: .4s; }
-        .wave span:nth-child(6) { animation-delay: .2s; }
-        .wave span:nth-child(7) { animation-delay: .1s; }
-        .wave span:nth-child(8) { animation-delay: .3s; }
+
+        .wave span:nth-child(1) {
+            height: 20px;
+        }
+
+        .wave span:nth-child(2) {
+            height: 40px;
+            animation-delay: .1s;
+        }
+
+        .wave span:nth-child(3) {
+            height: 30px;
+            animation-delay: .2s;
+        }
+
+        .wave span:nth-child(4) {
+            height: 50px;
+            animation-delay: .3s;
+        }
+
+        .wave span:nth-child(5) {
+            height: 25px;
+            animation-delay: .15s;
+        }
+
+        .wave span:nth-child(6) {
+            height: 45px;
+            animation-delay: .25s;
+        }
+
+        .wave span:nth-child(7) {
+            height: 32px;
+            animation-delay: .1s;
+        }
+
 
         @keyframes wave {
-            from { height: 10px; }
-            to { height: 45px; }
+
+            from {
+
+                transform:
+                    scaleY(0.5);
+
+            }
+
+            to {
+
+                transform:
+                    scaleY(1);
+
+            }
+
         }
 
-        /* ---------------- CONTACT ---------------- */
 
-       <!-- CONTACT -->
+        /* =========================
+           CONTACT
+        ========================== */
 
-<section id="contact" class="contact reveal">
+        .contact {
 
-    <div class="section-label">05 — Contact</div>
+            text-align: center;
 
-    <h2>Let's make something.</h2>
+            padding-bottom:
+                150px;
 
-    <p>
-        Have an idea, project or just want to talk about tech or music?
-    </p>
+        }
 
-    <a class="email"
-       href="mailto:ak4711862@gmail.com">
-        ak4711862@gmail.com
-    </a>
 
-    <div class="socials">
+        .contact p {
 
-        <a href="https://www.instagram.com/itz__akshat__00/"
-           target="_blank"
-           rel="noopener noreferrer">
-            Instagram
-        </a>
+            color: #888;
 
-        <a href="https://www.linkedin.com/in/akshat-kumar-5ba343429/"
-           target="_blank"
-           rel="noopener noreferrer">
-            LinkedIn
-        </a>
+            margin-bottom: 30px;
 
-        <a href="https://wa.me/919798099793"
-           target="_blank"
-           rel="noopener noreferrer">
-            WhatsApp
-        </a>
+        }
 
-        <a href="mailto:ak4711862@gmail.com">
-            Email
-        </a>
 
-    </div>
+        .email {
 
-</section>
-        /* ---------------- FOOTER ---------------- */
+            display: inline-block;
+
+            font-size:
+                clamp(20px, 4vw, 36px);
+
+            color: white;
+
+            text-decoration: none;
+
+            border-bottom:
+                1px solid #555;
+
+            transition:
+                0.3s;
+
+        }
+
+
+        .email:hover {
+
+            color:
+                #a78bfa;
+
+            border-color:
+                #a78bfa;
+
+        }
+
+
+        /* =========================
+           SOCIAL BUTTONS
+        ========================== */
+
+        .socials {
+
+            margin-top: 40px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+        }
+
+
+        .socials a {
+
+            padding:
+                12px 19px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #aaa;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition:
+                0.3s;
+
+        }
+
+
+        .socials a:hover {
+
+            color: white;
+
+            border-color:
+                var(--purple);
+
+            background:
+                rgba(139,92,246,0.12);
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 8px 30px
+                rgba(139,92,246,0.15);
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
 
         footer {
-            border-top: 1px solid var(--border);
-            padding: 30px 5%;
+
+            border-top:
+                1px solid var(--border);
+
+            padding:
+                30px 5%;
+
             display: flex;
-            justify-content: space-between;
+
+            justify-content:
+                space-between;
+
             color: #666;
+
             font-size: 12px;
+
         }
 
-        /* ---------------- REVEAL ---------------- */
+
+        /* =========================
+           SCROLL ANIMATION
+        ========================== */
 
         .reveal {
+
             opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s ease;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                0.9s ease;
+
         }
+
 
         .reveal.show {
+
             opacity: 1;
-            transform: translateY(0);
+
+            transform:
+                translateY(0);
+
         }
 
-        /* ---------------- MOBILE ---------------- */
+
+        /* =========================
+           MOBILE
+        ========================== */
 
         @media (max-width: 750px) {
 
             nav ul {
+
                 display: none;
+
             }
+
 
             .status {
+
                 display: none;
+
             }
+
 
             .hero h1 {
-                letter-spacing: -3px;
+
+                letter-spacing:
+                    -4px;
+
             }
+
 
             .about-grid,
-            .music-box {
-                grid-template-columns: 1fr;
+            .music-grid {
+
+                grid-template-columns:
+                    1fr;
+
             }
+
 
             .projects {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
+
 
             section {
-                padding: 80px 0;
+
+                padding:
+                    80px 0;
+
             }
 
+
             footer {
-                flex-direction: column;
+
+                flex-direction:
+                    column;
+
                 gap: 10px;
+
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     MOUSE GLOW
+========================== -->
+
 <div id="cursorGlow"></div>
 
-<!-- NAVIGATION -->
+
+<!-- =========================
+     NAVIGATION
+========================== -->
 
 <nav>
-    <div class="logo">akshat<span>.</span></div>
+
+    <div class="logo">
+        akshat<span>.</span>
+    </div>
+
 
     <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#music">Music</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="#skills">
+                Skills
+            </a>
+        </li>
+
+        <li>
+            <a href="#projects">
+                Projects
+            </a>
+        </li>
+
+        <li>
+            <a href="#music">
+                Music
+            </a>
+        </li>
+
+        <li>
+            <a href="#contact">
+                Contact
+            </a>
+        </li>
+
     </ul>
 
+
     <div class="status">
-        <span class="dot"></span>building
+
+        <span class="dot"></span>
+
+        online
+
     </div>
+
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================== -->
 
 <header class="hero">
 
     <div class="hero-content">
 
+
         <div class="badge">
+
             18 · CSE Student · Noida, India
+
         </div>
+
 
         <h1>
-            Hi, I'm <span class="gradient">Akshat.</span>
+
+            Hi, I'm
+
+            <span class="gradient">
+                Akshat.
+            </span>
+
         </h1>
 
+
         <p>
-            I like building things, breaking things, learning how they work
-            and occasionally forgetting the lyrics while singing them.
+
+            I build things with code,
+            experiment with ideas,
+            and spend an unreasonable amount
+            of time listening to music.
+
         </p>
 
+
         <div class="buttons">
-            <a href="#projects" class="btn btn-primary">
+
+            <a
+                href="#projects"
+                class="btn btn-primary">
+
                 Explore my work ↓
+
             </a>
 
-            <a href="#contact" class="btn">
-                Say hello
+
+            <a
+                href="#contact"
+                class="btn">
+
+                Let's talk
+
             </a>
+
         </div>
 
+
         <div class="scroll">
+
             ↓ scroll to explore
+
         </div>
 
     </div>
@@ -566,43 +1210,99 @@
 </header>
 
 
-<!-- ABOUT -->
 
-<section id="about" class="reveal">
+<!-- =========================
+     ABOUT
+========================== -->
 
-    <div class="section-label">01 — About</div>
+<section
+    id="about"
+    class="reveal">
 
-    <h2>A student, builder<br>and music guy.</h2>
+
+    <div class="section-label">
+
+        01 — About
+
+    </div>
+
+
+    <h2>
+
+        Student.
+        <br>
+
+        Builder.
+        <br>
+
+        Music guy.
+
+    </h2>
+
 
     <div class="about-grid">
 
+
         <div class="card">
 
-            <p>
-                I'm Akshat, an 18-year-old Computer Science student
+            <p class="about-text">
+
+                I'm Akshat, an 18-year-old
+                Computer Science student
                 currently based in Noida.
+
                 <br><br>
 
-                I'm interested in software, AI, the internet and the
-                weird amount of things you can create with a laptop
-                and a good idea.
+                I'm interested in software,
+                artificial intelligence,
+                websites and basically
+                anything that lets me turn
+                an idea into something real.
+
                 <br><br>
 
-                Outside tech, music is probably the biggest part of me.
-                I enjoy singing, discovering new sounds and messing
-                around with ideas that probably shouldn't work.
+                Outside technology,
+                music is a huge part of my life.
+                I enjoy singing, discovering
+                new songs and experimenting
+                with different sounds.
+
+                <br><br>
+
+                Still figuring things out.
+                That's kind of the fun part.
+
             </p>
 
         </div>
 
+
         <div class="card">
 
-            <div class="big-number">18</div>
+            <div class="big-number">
 
-            <p>
-                years old<br>
-                currently learning<br>
-                always experimenting
+                18
+
+            </div>
+
+
+            <p class="about-text">
+
+                years old
+
+                <br>
+
+                CSE student
+
+                <br>
+
+                Noida, India
+
+                <br><br>
+
+                Currently learning.
+                Always experimenting.
+
             </p>
 
         </div>
@@ -612,91 +1312,209 @@
 </section>
 
 
-<!-- SKILLS -->
 
-<section class="reveal">
+<!-- =========================
+     SKILLS
+========================== -->
 
-    <div class="section-label">02 — Things I like</div>
+<section
+    id="skills"
+    class="reveal">
 
-    <h2>Currently obsessed with.</h2>
+
+    <div class="section-label">
+
+        02 — Skills
+
+    </div>
+
+
+    <h2>
+
+        Things I'm
+        <br>
+
+        exploring.
+
+    </h2>
+
 
     <div class="skills">
 
-        <div class="skill">Python</div>
-        <div class="skill">Web Development</div>
-        <div class="skill">AI / ML</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">Problem Solving</div>
-        <div class="skill">UI Design</div>
-        <div class="skill">Music</div>
-        <div class="skill">Singing</div>
-        <div class="skill">Experimenting</div>
-        <div class="skill">Learning</div>
+        <div class="skill">
+            Python
+        </div>
+
+        <div class="skill">
+            HTML
+        </div>
+
+        <div class="skill">
+            CSS
+        </div>
+
+        <div class="skill">
+            JavaScript
+        </div>
+
+        <div class="skill">
+            Web Development
+        </div>
+
+        <div class="skill">
+            AI / ML
+        </div>
+
+        <div class="skill">
+            UI Design
+        </div>
+
+        <div class="skill">
+            Problem Solving
+        </div>
+
+        <div class="skill">
+            Singing
+        </div>
+
+        <div class="skill">
+            Music
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- PROJECTS -->
 
-<section id="projects" class="reveal">
+<!-- =========================
+     PROJECTS
+========================== -->
 
-    <div class="section-label">03 — Projects</div>
+<section
+    id="projects"
+    class="reveal">
 
-    <h2>Ideas I'm playing with.</h2>
+
+    <div class="section-label">
+
+        03 — Projects
+
+    </div>
+
+
+    <h2>
+
+        Things I want
+        <br>
+
+        to build.
+
+    </h2>
+
 
     <div class="projects">
 
+
         <div class="card project">
 
-            <div class="project-number">01 / WEB</div>
+            <div class="project-number">
 
-            <h3>Campus Hub</h3>
+                01 / WEB
+
+            </div>
+
+
+            <h3>
+
+                Campus Hub
+
+            </h3>
+
 
             <p>
-                A simple digital space for students to discover
-                useful college resources, maps and information.
+
+                A digital space for students
+                to discover useful college
+                resources, maps and information.
+
             </p>
 
+
             <div class="project-tag">
+
                 HTML · CSS · JavaScript
+
             </div>
 
         </div>
 
 
+
         <div class="card project">
 
-            <div class="project-number">02 / AI</div>
+            <div class="project-number">
 
-            <h3>Personal AI Lab</h3>
+                02 / AI
+
+            </div>
+
+
+            <h3>
+
+                Personal AI Lab
+
+            </h3>
+
 
             <p>
-                Experiments with AI assistants, automation and
-                small tools designed to make everyday tasks easier.
+
+                Experiments with AI assistants,
+                automation and small tools
+                designed to solve everyday problems.
+
             </p>
 
+
             <div class="project-tag">
+
                 Python · AI · APIs
+
             </div>
 
         </div>
+
 
 
         <div class="card project">
 
-            <div class="project-number">03 / MUSIC</div>
+            <div class="project-number">
 
-            <h3>Soundboard</h3>
+                03 / MUSIC
+
+            </div>
+
+
+            <h3>
+
+                Soundboard
+
+            </h3>
+
 
             <p>
-                A future playground for discovering songs,
-                collecting sounds and experimenting with music.
+
+                A future playground for discovering
+                songs, collecting sounds and
+                experimenting with music.
+
             </p>
+
 
             <div class="project-tag">
+
                 Music · Web · Creativity
+
             </div>
 
         </div>
@@ -706,28 +1524,64 @@
 </section>
 
 
-<!-- MUSIC -->
 
-<section id="music" class="reveal">
+<!-- =========================
+     MUSIC
+========================== -->
 
-    <div class="section-label">04 — Music</div>
+<section
+    id="music"
+    class="reveal">
 
-    <h2>Tech isn't the only thing<br>I care about.</h2>
 
-    <div class="music-box">
+    <div class="section-label">
+
+        04 — Music
+
+    </div>
+
+
+    <h2>
+
+        Coding is one side.
+        <br>
+
+        Music is the other.
+
+    </h2>
+
+
+    <div class="music-grid">
+
 
         <div class="card music-card">
 
-            <div class="music-icon">🎙️</div>
 
-            <h3>Singing</h3>
+            <div class="music-icon">
+
+                🎙️
+
+            </div>
+
+
+            <h3>
+
+                Singing
+
+            </h3>
+
 
             <p>
-                One of those things I can randomly start doing
+
+                One of those things
+                I can randomly start doing
                 regardless of where I am.
+
             </p>
 
+
             <div class="wave">
+
                 <span></span>
                 <span></span>
                 <span></span>
@@ -735,24 +1589,42 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>
+
             </div>
 
         </div>
 
 
+
         <div class="card music-card">
 
-            <div class="music-icon">🎧</div>
 
-            <h3>Always listening</h3>
+            <div class="music-icon">
+
+                🎧
+
+            </div>
+
+
+            <h3>
+
+                Always listening
+
+            </h3>
+
 
             <p>
-                Music is part of the background of almost everything
-                I do — coding, travelling, studying or just existing.
+
+                Music somehow finds its way
+                into almost everything I do —
+                coding, travelling, studying
+                or just doing nothing.
+
             </p>
 
+
             <div class="wave">
+
                 <span></span>
                 <span></span>
                 <span></span>
@@ -760,7 +1632,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>
+
             </div>
 
         </div>
@@ -770,93 +1642,225 @@
 </section>
 
 
-<!-- CONTACT -->
 
-<section id="contact" class="contact reveal">
+<!-- =========================
+     CONTACT
+========================== -->
 
-    <div class="section-label">05 — Contact</div>
+<section
+    id="contact"
+    class="contact reveal">
 
-    <h2>Let's make something.</h2>
+
+    <div class="section-label">
+
+        05 — Contact
+
+    </div>
+
+
+    <h2>
+
+        Let's make
+        <br>
+
+        something.
+
+    </h2>
+
 
     <p>
-        Have an idea, project or just want to talk about tech or music?
+
+        Have an idea,
+        project or just want
+        to talk about tech or music?
+
     </p>
 
-    <a class="email"
-       href="mailto:hello@akshatkumar.in">
-        hello@akshatkumar.in
+
+    <!-- EMAIL -->
+
+    <a
+        class="email"
+        href="mailto:ak4711862@gmail.com">
+
+        ak4711862@gmail.com
+
     </a>
+
+
+
+    <!-- SOCIALS -->
+
+    <div class="socials">
+
+
+        <a
+            href="https://www.instagram.com/itz__akshat__00/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            📸 Instagram
+
+        </a>
+
+
+        <a
+            href="https://www.linkedin.com/in/akshat-kumar-5ba343429/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            💼 LinkedIn
+
+        </a>
+
+
+        <a
+            href="https://wa.me/919798099793"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            💬 WhatsApp
+
+        </a>
+
+
+        <a
+            href="mailto:ak4711862@gmail.com">
+
+            ✉️ Email
+
+        </a>
+
+    </div>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================== -->
 
 <footer>
 
-    <div>
-        © 2026 Akshat Kumar
-    </div>
 
     <div>
+
+        © 2026 Akshat Kumar
+
+    </div>
+
+
+    <div>
+
         Made with curiosity & caffeine.
+
     </div>
 
 </footer>
 
 
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
 <script>
 
-    /* Mouse glow */
 
-    const glow = document.getElementById("cursorGlow");
+    /* =========================
+       MOUSE GLOW
+    ========================== */
 
-    document.addEventListener("mousemove", (e) => {
-
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
-
-    });
+    const glow =
+        document.getElementById(
+            "cursorGlow"
+        );
 
 
-    /* Scroll reveal */
+    document.addEventListener(
+        "mousemove",
+        function(event) {
 
-    const elements = document.querySelectorAll(".reveal");
+            glow.style.left =
+                event.clientX + "px";
 
-    const observer = new IntersectionObserver(
-        (entries) => {
+            glow.style.top =
+                event.clientY + "px";
 
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
         }
     );
 
-    elements.forEach((element) => {
-        observer.observe(element);
-    });
 
 
-    /* Console message */
+    /* =========================
+       SCROLL ANIMATION
+    ========================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+
+    const observer =
+        new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(
+                    function(entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(
+        function(element) {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+    /* =========================
+       CONSOLE MESSAGE
+    ========================== */
 
     console.log(
         "%cHey 👋",
-        "font-size: 25px; font-weight: bold;"
+        "font-size:25px;font-weight:bold;"
     );
+
 
     console.log(
         "Welcome to Akshat's corner of the internet."
     );
 
+
 </script>
 
+
 </body>
+
 </html>

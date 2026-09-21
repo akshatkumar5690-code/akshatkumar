@@ -45,6 +45,63 @@
 
 
         body {
+            body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    overflow-x: hidden;
+}
+
+
+/* CAR VIDEO */
+
+#carBackground {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -4;
+
+    pointer-events: none;
+
+    filter:
+        brightness(0.28)
+        contrast(1.15)
+        saturate(0.85);
+
+    transform: scale(1.04);
+}
+
+#videoOverlay {
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,5,7,0.55),
+            rgba(5,5,7,0.72)
+        );
+
+    z-index: -3;
+
+    pointer-events: none;
+}
+
+
+/* your existing code continues */
+
+body::before {
 
             font-family:
                 Arial,
@@ -1074,6 +1131,18 @@
 
 
 <body>
+    <video id="carBackground"
+       autoplay
+       muted
+       loop
+       playsinline
+       preload="auto">
+
+    <source src="assets/lamborghini.mp4" type="video/mp4">
+
+</video>
+
+<div id="videoOverlay"></div>
 
 
 <!-- =========================

@@ -203,4 +203,58 @@
 
 </body>
 </html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<div class="contact-links">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/11234567890" target="_blank" class="contact-card whatsapp">
+    <i class="fab fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://instagram.com/yourusername" target="_blank" class="contact-card instagram">
+    <i class="fab fa-instagram"></i>
+    <span>Instagram</span>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-card linkedin">
+    <i class="fab fa-linkedin-in"></i>
+    <span>LinkedIn</span>
+  </a>
+
+  <!-- Gmail / Email -->
+  <a href="mailto:yourname@gmail.com" class="contact-card gmail">
+    <i class="fas fa-envelope"></i>
+    <span>Email Me</span>
+  </a>
+</div>
+.contact-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Brand Colors */
+.whatsapp  { background-color: #25D366; }
+.instagram { background-color: #E4405F; }
+.linkedin  { background-color: #0A66C2; }
+.gmail     { background-color: #EA4335; }

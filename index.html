@@ -21,46 +21,8 @@
     ========================== -->
 
     <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-
-        :root {
-
-            --background: #050507;
-            --card: rgba(255,255,255,0.055);
-
-            --border: rgba(255,255,255,0.11);
-
-            --text: #f5f5f5;
-            --muted: #999;
-
-            --purple: #8b5cf6;
-            --blue: #06b6d4;
-
-        }
-
-
-        body {
-    
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background: var(--background);
-
-    color: var(--text);
-
-    overflow-x: hidden;
-}
-
-
+{
+        
 /* CAR VIDEO */
 
 #carBackground {
@@ -102,7 +64,48 @@
 
 
 /* your existing code continues */
+/* ROYAL KAYASTHA HEADER */
+.royal-header {
+  width: 100%;
+  min-height: 220px;
+  padding: 35px 20px;
+  background: radial-gradient(circle at center, #3a0b0b 0%, #160707 45%, #080505 100%);
+  border-bottom: 2px solid #c99a3b;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8), inset 0 -10px 40px rgba(139, 30, 30, 0.15);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
 
+.royal-header::before,
+.royal-header::after {
+  content: "❦";
+  position: absolute;
+  top: 25px;
+  color: #c99a3b;
+  font-size: 45px;
+  opacity: 0.8;
+}
+.royal-header::before { left: 25px; }
+.royal-header::after { right: 25px; transform: scaleX(-1); }
+
+.crown { color: #e0b653; font-size: 35px; margin-bottom: 5px; }
+.royal-subtitle { color: #b99045; font-size: 11px; letter-spacing: 6px; text-transform: uppercase; }
+.user-name h2 { font-family: Georgia, serif; font-size: clamp(24px, 5vw, 42px); color: #ffffff; letter-spacing: 4px; margin: 5px 0; }
+.crest-title h1 {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 9vw, 90px);
+  font-weight: bold;
+  letter-spacing: 10px;
+  color: #e1b75a;
+  background: linear-gradient(180deg, #fff0a8 0%, #e1b75a 30%, #a96f16 65%, #f1cf72 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gold-line { width: min(600px, 80%); height: 2px; margin: 12px auto; background: linear-gradient(90deg, transparent, #8f671e, #f1cf72, #8f671e, transparent); }
+.royal-tagline { color: #d2ae62; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; }
+        
 body::before {
 
             font-family:
@@ -1133,6 +1136,27 @@ body::before {
 
 
 <body>
+    <!-- ROYAL KAYASTHA HEADER -->
+<header class="royal-header">
+  <div class="royal-crest">
+    <div class="crown">♛</div>
+    <div class="royal-subtitle">THE ROYAL LEGACY</div>
+    
+    <div class="user-name">
+      <h2>AKSHAT KUMAR</h2>
+    </div>
+
+    <div class="crest-title">
+      <h1>KAYASTHA</h1>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <div class="royal-tagline">
+      TRADITION • KNOWLEDGE • LEGACY
+    </div>
+  </div>
+</header>
     <!-- =========================
      CINEMATIC CAR VIDEO
 ========================= -->

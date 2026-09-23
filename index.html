@@ -22,6 +22,59 @@
 
     <style>
 {
+      /* Custom Cursor and Glow Styles */
+* {
+  cursor: none;
+}
+
+.glow-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.18),
+    transparent 80%
+  );
+  z-index: 1;
+  transition: background 0.05s ease-out;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px #38bdf8, 0 0 20px #38bdf8;
+}
+
+.cursor-trail {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  background-color: rgba(56, 189, 248, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+  transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+}
+
+body.hovered .cursor-trail {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.8);
+}
         
 /* CAR VIDEO */
 
@@ -1136,6 +1189,9 @@ body::before {
 
 
 <body>
+  <div class="cursor-dot"></div>
+<div class="cursor-trail"></div>
+<div class="glow-bg"></div>
     <!-- ROYAL KAYASTHA HEADER -->
 <header class="royal-header">
   <div class="royal-crest">
@@ -1972,7 +2028,51 @@ body::before {
 
 
 </script>
+<script>
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorTrail = document.querySelector('.cursor-trail');
+  const glowBg = document.querySelector('.glow-bg');
 
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let trailX = mouseX;
+  let trailY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (cursorDot) {
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    }
+
+    if (glowBg) {
+      glowBg.style.setProperty('--mouse-x', `${mouseX}px`);
+      glowBg.style.setProperty('--mouse-y', `${mouseY}px`);
+    }
+  });
+
+  function animate() {
+    trailX += (mouseX - trailX) * 0.15;
+    trailY += (mouseY - trailY) * 0.15;
+
+    if (cursorTrail) {
+      cursorTrail.style.left = `${trailX}px`;
+      cursorTrail.style.top = `${trailY}px`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  const interactiveElements = document.querySelectorAll('button, a, input, [role="button"]');
+  interactiveElements.forEach((el) => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+  });
+</script>
+    
 
 </body>
 

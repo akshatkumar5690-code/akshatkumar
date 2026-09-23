@@ -2025,54 +2025,53 @@ body::before {
     console.log(
         "Welcome to Akshat's corner of the internet."
     );
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorTrail = document.querySelector('.cursor-trail');
+    const glowBg = document.querySelector('.glow-bg');
 
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let trailX = mouseX;
+    let trailY = mouseY;
 
-</script>
-<script>
-  const cursorDot = document.querySelector('.cursor-dot');
-  const cursorTrail = document.querySelector('.cursor-trail');
-  const glowBg = document.querySelector('.glow-bg');
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let trailX = mouseX;
-  let trailY = mouseY;
+        if (cursorDot) {
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+        }
 
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+        if (glowBg) {
+            glowBg.style.setProperty('--mouse-x', `${mouseX}px`);
+            glowBg.style.setProperty('--mouse-y', `${mouseY}px`);
+        }
+    });
 
-    if (cursorDot) {
-      cursorDot.style.left = `${mouseX}px`;
-      cursorDot.style.top = `${mouseY}px`;
+    function animate() {
+        trailX += (mouseX - trailX) * 0.15;
+        trailY += (mouseY - trailY) * 0.15;
+
+        if (cursorTrail) {
+            cursorTrail.style.left = `${trailX}px`;
+            cursorTrail.style.top = `${trailY}px`;
+        }
+
+        requestAnimationFrame(animate);
     }
 
-    if (glowBg) {
-      glowBg.style.setProperty('--mouse-x', `${mouseX}px`);
-      glowBg.style.setProperty('--mouse-y', `${mouseY}px`);
-    }
-  });
+    animate();
 
-  function animate() {
-    trailX += (mouseX - trailX) * 0.15;
-    trailY += (mouseY - trailY) * 0.15;
-
-    if (cursorTrail) {
-      cursorTrail.style.left = `${trailX}px`;
-      cursorTrail.style.top = `${trailY}px`;
-    }
-
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  const interactiveElements = document.querySelectorAll('button, a, input, [role="button"]');
-  interactiveElements.forEach((el) => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
-  });
+    const interactiveElements = document.querySelectorAll('button, a, input, [role="button"]');
+    interactiveElements.forEach((el) => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+    });
 </script>
     
+
+
 
 </body>
 

@@ -1923,14 +1923,32 @@ body::before {
         "%cHey 👋",
         "font-size:25px;font-weight:bold;"
     );
+<script>
+  // UPI Script
+const upiId = "9797099793@hdfc";
+ // Yaha apni actual UPI ID daalo
+const payeeName = "Akshat Kumar or Anupma";
+const amount = "";
+const note = "Payment";
 
+const upiDeepLink = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${encodeURIComponent(amount)}&tn=${encodeURIComponent(note)}`;
 
-    console.log(
-        "Welcome to Akshat's corner of the internet."
-    );
+document.getElementById("pay-now-btn").setAttribute("href", upiDeepLink);
 
+console.log(
+    "Welcome to Akshat's World 🌎"
+);
+</script>/
 
-</script>
+<!-- Payment Section -->
+<div style="text-align: center; margin: 30px auto; font-family: Arial, sans-serif;">
+    <img src="./Assets/upi-qr.png" alt="Scan to Pay" width="220" style="border: 2px solid #ccc;">
+    <br>
+    <a id="pay-now-btn" href="#" style="background-color: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 15px;">
+        Click to Pay via Any App
+    </a>
+</div>
+    
 
 
 </body>

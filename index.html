@@ -1,1 +1,407 @@
+<!-- ================= CONTACT SECTION ================= -->
 
+<section class="contact-section" id="contact">
+
+  <div class="contact-glow"></div>
+
+  <div class="contact-container">
+
+    <span class="contact-small">GET IN TOUCH</span>
+
+    <h2 class="contact-title">
+      CONTACT <span>ME</span>
+    </h2>
+
+    <p class="contact-subtitle">
+      Have a question, collaboration idea, or just want to say hello?
+      Feel free to connect with me.
+    </p>
+
+    <div class="contact-grid">
+
+      <!-- Email -->
+      <a href="mailto:your@email.com" class="contact-card">
+        <div class="contact-icon">✉</div>
+        <div>
+          <h3>Email</h3>
+          <p>ak4711862@gmail.com</p>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+
+      <!-- Phone -->
+      <a href="tel:+919798099793" class="contact-card">
+        <div class="contact-icon">☎</div>
+        <div>
+          <h3>Phone</h3>
+          <p>+91 9798099793</p>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919798099793" class="contact-card">
+        <div class="contact-icon">◉</div>
+        <div>
+          <h3>WhatsApp</h3>
+          <p>Let's chat</p>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+
+      <!-- Website -->
+      <a href="https://akshatkumar.in" class="contact-card">
+        <div class="contact-icon">⌂</div>
+        <div>
+          <h3>Website</h3>
+          <p>akshatkumar.in</p>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+
+    </div>
+
+    <div class="royal-divider">
+      <span></span>
+      ✦
+      <span></span>
+    </div>
+
+    <p class="contact-footer">
+      © 2026 <strong>Akshat Kumar</strong> · All Rights Reserved
+    </p>
+
+  </div>
+</section>
+
+
+<style>
+
+/* ================= CONTACT SECTION ================= */
+
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at 50% 30%,
+      rgba(139, 0, 0, 0.25),
+      transparent 45%),
+    #070303;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Ambient background glow */
+
+.contact-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(170, 110, 0, 0.12);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* Container */
+
+.contact-container {
+  position: relative;
+  max-width: 1050px;
+  margin: auto;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Small heading */
+
+.contact-small {
+  color: #d6a84f;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-shadow:
+    0 0 5px rgba(214,168,79,.7),
+    0 0 15px rgba(214,168,79,.4);
+}
+
+/* Main heading */
+
+.contact-title {
+  margin: 15px 0;
+  font-size: clamp(42px, 8vw, 78px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow:
+    0 0 5px rgba(255,255,255,.8),
+    0 0 15px rgba(214,168,79,.45);
+}
+
+.contact-title span {
+  color: #d6a84f;
+  text-shadow:
+    0 0 5px #d6a84f,
+    0 0 15px #d6a84f,
+    0 0 35px rgba(214,168,79,.7),
+    0 0 70px rgba(139,0,0,.5);
+}
+
+/* Subtitle */
+
+.contact-subtitle {
+  max-width: 650px;
+  margin: 0 auto 50px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* Cards grid */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  text-align: left;
+}
+
+/* Contact cards */
+
+.contact-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 25px;
+  text-decoration: none;
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139,0,0,.20),
+      rgba(255,255,255,.025)
+    );
+
+  border: 1px solid rgba(214,168,79,.35);
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 10px rgba(214,168,79,.08),
+    inset 0 0 20px rgba(139,0,0,.08);
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+
+  overflow: hidden;
+}
+
+/* Moving shine */
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.13),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  transition: left .7s ease;
+}
+
+/* Hover */
+
+.contact-card:hover {
+  transform: translateY(-7px) scale(1.015);
+
+  border-color: #d6a84f;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139,0,0,.38),
+      rgba(214,168,79,.08)
+    );
+
+  box-shadow:
+    0 0 8px rgba(214,168,79,.55),
+    0 0 25px rgba(214,168,79,.35),
+    0 0 60px rgba(139,0,0,.25),
+    inset 0 0 25px rgba(214,168,79,.08);
+}
+
+.contact-card:hover::before {
+  left: 140%;
+}
+
+/* Icon */
+
+.contact-icon {
+  min-width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #d6a84f;
+  font-size: 23px;
+
+  background: rgba(139,0,0,.25);
+
+  border: 1px solid rgba(214,168,79,.5);
+
+  box-shadow:
+    0 0 8px rgba(214,168,79,.25),
+    inset 0 0 12px rgba(139,0,0,.25);
+
+  transition: .35s ease;
+}
+
+.contact-card:hover .contact-icon {
+  color: #fff;
+  background: #8b0000;
+
+  box-shadow:
+    0 0 8px #d6a84f,
+    0 0 20px #d6a84f,
+    0 0 40px rgba(139,0,0,.7);
+
+  transform: rotate(8deg) scale(1.08);
+}
+
+/* Text */
+
+.contact-card h3 {
+  margin: 0 0 6px;
+  color: #d6a84f;
+  font-size: 18px;
+}
+
+.contact-card p {
+  margin: 0;
+  color: rgba(255,255,255,.65);
+  font-size: 14px;
+}
+
+/* Arrow */
+
+.contact-arrow {
+  margin-left: auto;
+  color: #d6a84f;
+  font-size: 25px;
+
+  transition: .3s ease;
+}
+
+.contact-card:hover .contact-arrow {
+  transform: translateX(7px);
+  text-shadow:
+    0 0 8px #d6a84f,
+    0 0 20px #d6a84f;
+}
+
+/* Divider */
+
+.royal-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  margin: 65px auto 25px;
+
+  color: #d6a84f;
+
+  text-shadow:
+    0 0 8px #d6a84f,
+    0 0 20px rgba(214,168,79,.6);
+}
+
+.royal-divider span {
+  width: 100px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d6a84f,
+    transparent
+  );
+
+  box-shadow: 0 0 8px rgba(214,168,79,.7);
+}
+
+/* Footer */
+
+.contact-footer {
+  color: rgba(255,255,255,.45);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.contact-footer strong {
+  color: #d6a84f;
+
+  text-shadow:
+    0 0 5px rgba(214,168,79,.6),
+    0 0 15px rgba(214,168,79,.3);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 650px) {
+
+  .contact-section {
+    padding: 80px 16px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-title {
+    font-size: 45px;
+  }
+
+  .contact-subtitle {
+    font-size: 14px;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .contact-card,
+  .contact-icon,
+  .contact-arrow,
+  .contact-card::before {
+    transition: none;
+  }
+
+}
+
+</style>

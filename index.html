@@ -1,5 +1,21 @@
 <!DOCTYPE html><html lang="en">
-<head>
+<head><style>
+#carBackground {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -10;
+}
+
+#videoOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: -9;
+}
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Akshat Kumar — CSE student, web developer, music enthusiast and storyteller from Noida.">
 <meta name="theme-color" content="#080303"><title>Akshat Kumar — Official</title><style>
@@ -28,8 +44,19 @@
     --glass:rgba(18,7,7,.70);
 }
 
-body{
-}
+<body>
+
+    <!-- Lamborghini Background -->
+    <video id="carBackground" autoplay muted loop playsinline>
+        <source src="assets/lamborghini.mp4" type="video/mp4">
+    </video>
+
+    <div id="videoOverlay"></div>
+
+    <!-- Ab tumhara Navbar -->
+    <nav>
+        ...
+    </nav>
 
 /* ================= BACKGROUND VIDEO ================= */
 
@@ -1042,3 +1069,34 @@ playsinline>
     <div class="card project">
 
         <div class="proj
+
+   <body>
+
+    <!-- Lamborghini -->
+
+    <!-- Navbar -->
+    <nav>
+        ...
+    </nav>
+
+    <!-- Hero -->
+    <section id="home">
+        ...
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        ...
+    </section>
+
+    <!-- SKILLS YAHAN -->
+    <section id="skills">
+        ...
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        ...
+    </section>
+
+           </body>

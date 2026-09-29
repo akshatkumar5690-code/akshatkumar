@@ -1,0 +1,20 @@
+{
+  "name": "akshatkumar-portfolio",
+  "version": "1.1.0",
+  "description": "Akshat Kumar's Personal Portfolio with BR06ai Assistant and NEXUS AI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node -e \"require('./api/chat.js'); require('./knowledge.js'); console.log('BR06ai verification passed successfully!');\""
+  },
+  "keywords": [
+    "portfolio",
+    "ai",
+    "chatbot",
+    "br06ai",
+    "nexus-ai"
+  ],
+  "author": "Akshat Kumar",
+  "license": "MIT"
+}

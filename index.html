@@ -16,6 +16,9 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="Assets/favicon.png">
 
+    <!-- BR06ai KNOWLEDGE BASE -->
+    <script src="knowledge.js"></script>
+
 
     <style>
 
@@ -1835,6 +1838,571 @@
 
         }
 
+
+        /* =========================
+           BR06ai CHATBOT STYLES
+        ========================== */
+
+        /* Floating Launcher */
+        .br06ai-launcher {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 990;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background: rgba(9, 9, 15, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 50px;
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(6, 182, 212, 0.18);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            outline: none;
+        }
+
+        .br06ai-launcher:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: rgba(6, 182, 212, 0.7);
+            box-shadow:
+                0 14px 40px rgba(0, 0, 0, 0.6),
+                0 0 28px rgba(6, 182, 212, 0.35);
+        }
+
+        .br06ai-launcher:focus-visible {
+            box-shadow: 0 0 0 2px #06b6d4, 0 0 25px rgba(6, 182, 212, 0.5);
+        }
+
+        .br06ai-launcher-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(139, 92, 246, 0.25));
+            color: #22d3ee;
+        }
+
+        .br06ai-launcher-icon svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .br06ai-launcher-text {
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            background: linear-gradient(135deg, #ffffff, #67e8f9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .br06ai-launcher-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse-live 2s infinite;
+        }
+
+        /* Chat Panel */
+        .br06ai-panel {
+            position: fixed;
+            bottom: 86px;
+            right: 26px;
+            z-index: 995;
+            width: min(420px, calc(100vw - 32px));
+            height: min(600px, calc(100vh - 120px));
+            display: flex;
+            flex-direction: column;
+            background: rgba(8, 8, 14, 0.94);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(6, 182, 212, 0.32);
+            border-radius: 24px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.75),
+                0 0 40px rgba(6, 182, 212, 0.14);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.96);
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .br06ai-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .br06ai-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #06b6d4, #8b5cf6, transparent);
+            pointer-events: none;
+        }
+
+        /* Panel Header */
+        .br06ai-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .br06ai-header-left {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .br06ai-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0284c7, #06b6d4, #8b5cf6);
+            color: #ffffff;
+            font-family: monospace;
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+        }
+
+        .br06ai-header-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .br06ai-status-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            color: #94a3b8;
+            font-family: monospace;
+            margin-top: 1px;
+        }
+
+        .br06ai-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .br06ai-btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .br06ai-btn-icon:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .br06ai-btn-icon:focus-visible {
+            box-shadow: 0 0 0 2px #06b6d4;
+        }
+
+        .br06ai-btn-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Messages Container */
+        .br06ai-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            scroll-behavior: smooth;
+        }
+
+        .br06ai-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .br06ai-messages::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        /* Welcome Card */
+        .br06ai-welcome-card {
+            padding: 14px 16px;
+            background: rgba(6, 182, 212, 0.06);
+            border: 1px dashed rgba(6, 182, 212, 0.3);
+            border-radius: 14px;
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .br06ai-welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-family: monospace;
+            font-weight: 700;
+            color: #67e8f9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        /* Suggested Prompts */
+        .br06ai-suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .br06ai-suggestions-title {
+            font-size: 10.5px;
+            font-family: monospace;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .br06ai-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .br06ai-chip {
+            padding: 6px 11px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #94a3b8;
+            font-size: 11.5px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            line-height: 1.3;
+        }
+
+        .br06ai-chip:hover {
+            color: #22d3ee;
+            border-color: rgba(6, 182, 212, 0.45);
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .br06ai-chip:focus-visible {
+            box-shadow: 0 0 0 2px #06b6d4;
+        }
+
+        /* Message Bubbles */
+        .br06ai-msg {
+            display: flex;
+            flex-direction: column;
+            max-width: 86%;
+            animation: msgFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes msgFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .br06ai-msg.user {
+            align-self: flex-end;
+        }
+
+        .br06ai-msg.assistant {
+            align-self: flex-start;
+        }
+
+        .br06ai-msg-bubble {
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .br06ai-msg.user .br06ai-msg-bubble {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.35), rgba(6, 182, 212, 0.3));
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: #e2e8f0;
+            border-bottom-left-radius: 4px;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble a {
+            color: #38bdf8;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble a:hover {
+            color: #7dd3fc;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble ul,
+        .br06ai-msg.assistant .br06ai-msg-bubble ol {
+            margin: 6px 0 6px 18px;
+            padding: 0;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble li {
+            margin-bottom: 4px;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble code {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 11.5px;
+            color: #67e8f9;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble p {
+            margin: 0 0 6px;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-bubble p:last-child {
+            margin-bottom: 0;
+        }
+
+        .br06ai-msg-meta {
+            font-size: 10px;
+            color: #64748b;
+            font-family: monospace;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .br06ai-msg.user .br06ai-msg-meta {
+            align-self: flex-end;
+        }
+
+        .br06ai-msg.assistant .br06ai-msg-meta {
+            align-self: flex-start;
+        }
+
+        /* Loading / Thinking Indicator */
+        .br06ai-typing {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            max-width: 80%;
+        }
+
+        .br06ai-typing-dots {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .br06ai-typing-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #22d3ee;
+            animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+
+        .br06ai-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .br06ai-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+            40% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .br06ai-typing-text {
+            font-size: 11.5px;
+            color: #94a3b8;
+            font-family: monospace;
+        }
+
+        /* Input Footer */
+        .br06ai-footer {
+            padding: 12px 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(5, 5, 8, 0.6);
+        }
+
+        .br06ai-input-form {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 6px 8px 6px 12px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .br06ai-input-form:focus-within {
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 0 16px rgba(6, 182, 212, 0.18);
+        }
+
+        .br06ai-textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 13px;
+            line-height: 1.4;
+            max-height: 80px;
+            min-height: 24px;
+            resize: none;
+            outline: none;
+            padding: 4px 0;
+        }
+
+        .br06ai-textarea::placeholder {
+            color: #64748b;
+        }
+
+        .br06ai-send-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0284c7, #06b6d4);
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            outline: none;
+        }
+
+        .br06ai-send-btn:hover:not(:disabled) {
+            transform: scale(1.06);
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+        }
+
+        .br06ai-send-btn:focus-visible {
+            box-shadow: 0 0 0 2px #06b6d4;
+        }
+
+        .br06ai-send-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .br06ai-send-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .br06ai-disclaimer {
+            margin-top: 6px;
+            text-align: center;
+            font-size: 10px;
+            color: #475569;
+            font-family: monospace;
+        }
+
+        @media (max-width: 500px) {
+            .br06ai-launcher {
+                bottom: 18px;
+                right: 18px;
+                padding: 10px 14px;
+            }
+
+            .br06ai-panel {
+                bottom: 12px;
+                right: 12px;
+                left: 12px;
+                width: calc(100vw - 24px);
+                height: min(580px, calc(100vh - 80px));
+                border-radius: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .br06ai-launcher,
+            .br06ai-panel,
+            .br06ai-msg,
+            .br06ai-typing-dot {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -2725,6 +3293,152 @@
 
 
     <!-- =========================
+         BR06ai CHATBOT INTERFACE
+    ========================== -->
+
+    <!-- Floating Launcher -->
+    <button
+        id="br06ai-launcher"
+        class="br06ai-launcher"
+        aria-label="Open BR06ai Personal Assistant"
+        aria-expanded="false"
+        aria-controls="br06ai-panel"
+        type="button">
+
+        <div class="br06ai-launcher-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                <circle cx="9" cy="10" r="1"></circle>
+                <circle cx="15" cy="10" r="1"></circle>
+            </svg>
+        </div>
+
+        <span class="br06ai-launcher-text">BR06ai</span>
+        <span class="br06ai-launcher-dot" aria-hidden="true"></span>
+
+    </button>
+
+
+    <!-- Chat Panel Dialog -->
+    <div
+        id="br06ai-panel"
+        class="br06ai-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="br06ai-title"
+        aria-hidden="true">
+
+        <!-- Header -->
+        <header class="br06ai-header">
+
+            <div class="br06ai-header-left">
+                <div class="br06ai-avatar" aria-hidden="true">
+                    BR06
+                </div>
+                <div class="br06ai-header-info">
+                    <h4 id="br06ai-title">BR06ai</h4>
+                    <div class="br06ai-status-row">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        <span>Online · Personal Assistant</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="br06ai-header-actions">
+                <button
+                    id="br06ai-new-chat-btn"
+                    class="br06ai-btn-icon"
+                    type="button"
+                    title="Start New Conversation"
+                    aria-label="Start New Conversation">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                        <path d="M21 3v5h-5"></path>
+                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                        <path d="M3 21v-5h5"></path>
+                    </svg>
+                </button>
+
+                <button
+                    id="br06ai-close-btn"
+                    class="br06ai-btn-icon"
+                    type="button"
+                    title="Close Chat Panel"
+                    aria-label="Close Chat Panel">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </header>
+
+        <!-- Messages Area -->
+        <div class="br06ai-messages" id="br06ai-messages" role="log" aria-live="polite">
+
+            <!-- Welcome Card -->
+            <div class="br06ai-welcome-card" id="br06ai-welcome-card">
+                <div class="br06ai-welcome-badge">
+                    ⚡ Personal Knowledge Intelligence
+                </div>
+                <p>
+                    Hey! I'm <strong>BR06ai</strong>, Akshat's personal AI assistant. Ask me anything about his background, his projects like <strong>NEXUS AI</strong>, technical skills, or how to get in touch!
+                </p>
+
+                <!-- Suggested Questions -->
+                <div class="br06ai-suggestions">
+                    <div class="br06ai-suggestions-title">
+                        Suggested questions:
+                    </div>
+                    <div class="br06ai-chips">
+                        <button type="button" class="br06ai-chip" data-question="Who is the person behind this portfolio?">Who is the person behind this portfolio?</button>
+                        <button type="button" class="br06ai-chip" data-question="What projects has he built?">What projects has he built?</button>
+                        <button type="button" class="br06ai-chip" data-question="Explain NEXUS AI.">Explain NEXUS AI.</button>
+                        <button type="button" class="br06ai-chip" data-question="What is he building right now?">What is he building right now?</button>
+                        <button type="button" class="br06ai-chip" data-question="What technologies does he use?">What technologies does he use?</button>
+                        <button type="button" class="br06ai-chip" data-question="How can I contact him?">How can I contact him?</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Input Footer -->
+        <footer class="br06ai-footer">
+
+            <form class="br06ai-input-form" id="br06ai-form">
+
+                <textarea
+                    id="br06ai-input"
+                    class="br06ai-textarea"
+                    placeholder="Ask BR06ai about Akshat..."
+                    rows="1"
+                    aria-label="Ask BR06ai a question"></textarea>
+
+                <button
+                    id="br06ai-send"
+                    class="br06ai-send-btn"
+                    type="submit"
+                    aria-label="Send message">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+
+            </form>
+
+            <div class="br06ai-disclaimer">
+                BR06ai · Trained on Akshat's verified portfolio intelligence
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================
          JAVASCRIPT
     ========================== -->
 
@@ -2934,6 +3648,326 @@
         console.log(
             "Welcome to Akshat's corner of the internet."
         );
+
+
+        /* =========================
+           BR06ai CHATBOT LOGIC
+        ========================== */
+
+        (function initBR06ai() {
+            const launcher = document.getElementById("br06ai-launcher");
+            const panel = document.getElementById("br06ai-panel");
+            const closeBtn = document.getElementById("br06ai-close-btn");
+            const newChatBtn = document.getElementById("br06ai-new-chat-btn");
+            const messagesContainer = document.getElementById("br06ai-messages");
+            const chatForm = document.getElementById("br06ai-form");
+            const chatInput = document.getElementById("br06ai-input");
+            const sendBtn = document.getElementById("br06ai-send");
+
+            if (!launcher || !panel || !chatForm || !chatInput) return;
+
+            let conversationHistory = [];
+            const STORAGE_KEY = "br06ai_chat_session_v1";
+
+            // Safe Markdown Formatter
+            function formatMarkdown(text) {
+                if (!text) return "";
+                let safe = text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+
+                safe = safe.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+                safe = safe.replace(/\*(.*?)\*/g, "<em>$1</em>");
+                safe = safe.replace(/`([^`]+)`/g, "<code>$1</code>");
+                safe = safe.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+                safe = safe.replace(/(^|[^"'>])(https?:\/\/[^\s<]+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer">$2</a>');
+
+                const lines = safe.split("\n");
+                let inList = false;
+                let processed = [];
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+                    if (/^\s*[-*•]\s+(.*)/.test(line)) {
+                        const content = line.replace(/^\s*[-*•]\s+/, "");
+                        if (!inList) {
+                            processed.push("<ul>");
+                            inList = true;
+                        }
+                        processed.push(`<li>${content}</li>`);
+                    } else {
+                        if (inList) {
+                            processed.push("</ul>");
+                            inList = false;
+                        }
+                        if (line.trim()) {
+                            processed.push(`<p>${line}</p>`);
+                        }
+                    }
+                }
+                if (inList) processed.push("</ul>");
+
+                return processed.join("");
+            }
+
+            // Local Knowledge Resolver (Smart fallback if backend has no API key or is running statically)
+            function queryLocalKnowledge(query) {
+                const k = window.AKSHAT_KNOWLEDGE;
+                if (!k) return "I am BR06ai, Akshat's personal AI assistant. Akshat is an 18-year-old CSE student and builder from Noida, building projects like NEXUS AI.";
+
+                const q = query.toLowerCase();
+
+                if (q.includes("asap") || q.includes("asaptools")) {
+                    return "ASAPTools is not currently listed in Akshat's published portfolio or repository documentation. Akshat's active featured projects include **NEXUS AI** (his flagship brand intelligence platform), **Campus Hub**, **Personal AI Lab**, and **Soundboard**.";
+                }
+
+                if (q.includes("nexus") || q.includes("brand intelligence") || q.includes("workflow") || q.includes("stage")) {
+                    return "⚡ **NEXUS AI** is Akshat's flagship project! It is an AI-powered brand intelligence platform that transforms raw ideas into strategic positioning, brand identities, visual direction, and launch-ready assets.\n\nKey Highlights:\n- **7-Stage Cognitive Pipeline**: Discover, Position, Challenge, Shape, Visualize, Guardian, and Launch.\n- **AI-Powered Brand Analysis**: Deep market failure and audience profile synthesis.\n- **Visual Identity Generation**: Design briefs, art direction, and style tokens.\n- **Brand Consistency Auditing**: Guardian engine that prevents narrative drift.\n\nYou can explore and try it live at: [nexus-ai.akshatkumar.in](https://nexus-ai.akshatkumar.in/) ↗";
+                }
+
+                if (q.includes("who") || q.includes("about") || q.includes("background") || q.includes("person") || q.includes("name")) {
+                    return `👋 **${k.profile.name}** is an 18-year-old Computer Science (CSE) student and builder currently based in **${k.profile.location}**.\n\nHe is passionate about software, artificial intelligence, and websites. Outside of tech, music is a central part of his life—he loves singing, discovering tracks, and experimenting with audio. He describes his journey as: *'Currently learning. Always experimenting. Still figuring things out. That's kind of the fun part.'*`;
+                }
+
+                if (q.includes("project") || q.includes("built") || q.includes("work")) {
+                    return `🚀 **Akshat's Portfolio Projects:**\n\n1. **[NEXUS AI](https://nexus-ai.akshatkumar.in/)** (Flagship / Live): Autonomous AI brand intelligence platform with a 7-stage cognitive workflow.\n2. **Campus Hub**: A digital hub for students to discover college resources, maps, and information.\n3. **Personal AI Lab**: Experiments with AI assistants, automation, and practical problem-solving tools.\n4. **Soundboard**: A future playground for discovering tracks and experimenting with sounds.`;
+                }
+
+                if (q.includes("technolog") || q.includes("skill") || q.includes("language") || q.includes("stack") || q.includes("python")) {
+                    return `🛠️ **Akshat's Technical Skills & Stack:**\n\n- **Languages**: Python, JavaScript, HTML, CSS\n- **Core Domains**: Web Development, AI / Machine Learning, UI/UX Design, APIs, Problem Solving\n- **Creative**: Singing, Music Discovery & Sound Experimentation`;
+                }
+
+                if (q.includes("building right now") || q.includes("current") || q.includes("building")) {
+                    return `⚡ **What Akshat is Building Right Now:**\n\nAkshat is currently focused on **[NEXUS AI](https://nexus-ai.akshatkumar.in/)**, enhancing its 7-stage cognitive pipeline, visual identity generators, and brand alignment guardian. He also continues experimentation in his **Personal AI Lab** with automation scripts and AI tools.`;
+                }
+
+                if (q.includes("contact") || q.includes("email") || q.includes("reach") || q.includes("talk") || q.includes("linkedin") || q.includes("social")) {
+                    return `📬 **Get in touch with Akshat:**\n\n- **Email**: [ak4711862@gmail.com](mailto:ak4711862@gmail.com)\n- **LinkedIn**: [Akshat Kumar on LinkedIn](${k.contact.linkedin})\n- **Instagram**: [@itz__akshat__00](${k.contact.instagram})\n- **WhatsApp**: [Message on WhatsApp](${k.contact.whatsapp})\n- **Portfolio**: [akshatkumar.in](${k.contact.portfolio})`;
+                }
+
+                if (q.includes("music") || q.includes("song") || q.includes("sing")) {
+                    return `🎵 Music is a huge part of Akshat's life! As he puts it: *'Coding is one side. Music is the other.'* He loves singing and spends an unreasonable amount of time discovering new music across genres.`;
+                }
+
+                return `I'm **BR06ai**, trained on Akshat's portfolio. You can ask me about his flagship platform **NEXUS AI**, his technical skills (Python, JS, AI/ML, Web), his background as an 18-year-old CSE student, or his contact channels!`;
+            }
+
+            // Scroll helper
+            function scrollToBottom() {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            // Create and append a message element
+            function appendMessage(sender, text, timestamp) {
+                const time = timestamp || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const msgDiv = document.createElement("div");
+                msgDiv.className = `br06ai-msg ${sender}`;
+
+                const bubble = document.createElement("div");
+                bubble.className = "br06ai-msg-bubble";
+
+                if (sender === "assistant") {
+                    bubble.innerHTML = formatMarkdown(text);
+                } else {
+                    bubble.textContent = text;
+                }
+
+                const meta = document.createElement("div");
+                meta.className = "br06ai-msg-meta";
+                meta.textContent = `${sender === 'user' ? 'You' : 'BR06ai'} · ${time}`;
+
+                msgDiv.appendChild(bubble);
+                msgDiv.appendChild(meta);
+                messagesContainer.appendChild(msgDiv);
+                scrollToBottom();
+
+                return msgDiv;
+            }
+
+            // Create typing indicator
+            let typingIndicator = null;
+            function showTypingIndicator() {
+                if (typingIndicator) return;
+                typingIndicator = document.createElement("div");
+                typingIndicator.className = "br06ai-typing";
+                typingIndicator.innerHTML = `
+                    <div class="br06ai-typing-dots">
+                        <span class="br06ai-typing-dot"></span>
+                        <span class="br06ai-typing-dot"></span>
+                        <span class="br06ai-typing-dot"></span>
+                    </div>
+                    <span class="br06ai-typing-text">BR06ai is thinking...</span>
+                `;
+                messagesContainer.appendChild(typingIndicator);
+                scrollToBottom();
+            }
+
+            function hideTypingIndicator() {
+                if (typingIndicator && typingIndicator.parentNode) {
+                    typingIndicator.parentNode.removeChild(typingIndicator);
+                }
+                typingIndicator = null;
+            }
+
+            // Toggle chat panel open/close
+            function toggleChat(open) {
+                const shouldOpen = typeof open === "boolean" ? open : !panel.classList.contains("open");
+                if (shouldOpen) {
+                    panel.classList.add("open");
+                    panel.setAttribute("aria-hidden", "false");
+                    launcher.setAttribute("aria-expanded", "true");
+                    setTimeout(() => chatInput.focus(), 150);
+                } else {
+                    panel.classList.remove("open");
+                    panel.setAttribute("aria-hidden", "true");
+                    launcher.setAttribute("aria-expanded", "false");
+                    launcher.focus();
+                }
+            }
+
+            launcher.addEventListener("click", () => toggleChat());
+            closeBtn.addEventListener("click", () => toggleChat(false));
+
+            // Escape key closes panel
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && panel.classList.contains("open")) {
+                    toggleChat(false);
+                }
+            });
+
+            // Auto-resize textarea
+            chatInput.addEventListener("input", function() {
+                this.style.height = "auto";
+                this.style.height = Math.min(this.scrollHeight, 80) + "px";
+            });
+
+            // Enter sends, Shift+Enter new line
+            chatInput.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    chatForm.dispatchEvent(new Event("submit"));
+                }
+            });
+
+            // Save & Restore Conversation
+            function saveSession() {
+                try {
+                    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(conversationHistory));
+                } catch (e) {}
+            }
+
+            function restoreSession() {
+                try {
+                    const saved = sessionStorage.getItem(STORAGE_KEY);
+                    if (saved) {
+                        const parsed = JSON.parse(saved);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            conversationHistory = parsed;
+                            parsed.forEach(item => {
+                                appendMessage(item.sender, item.text, item.time);
+                            });
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            // Clear Conversation
+            newChatBtn.addEventListener("click", () => {
+                conversationHistory = [];
+                try {
+                    sessionStorage.removeItem(STORAGE_KEY);
+                } catch (e) {}
+
+                const bubbles = messagesContainer.querySelectorAll(".br06ai-msg, .br06ai-typing");
+                bubbles.forEach(b => b.remove());
+                scrollToBottom();
+                chatInput.focus();
+            });
+
+            // Handle Question Submission
+            async function handleSendMessage(messageText) {
+                const text = (messageText || chatInput.value).trim();
+                if (!text) return;
+
+                // Append user message
+                const userTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                appendMessage("user", text, userTime);
+                conversationHistory.push({ sender: "user", text: text, time: userTime });
+                saveSession();
+
+                // Clear input
+                chatInput.value = "";
+                chatInput.style.height = "auto";
+                sendBtn.disabled = true;
+                showTypingIndicator();
+
+                try {
+                    const res = await fetch("/api/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            message: text,
+                            history: conversationHistory
+                        })
+                    });
+
+                    hideTypingIndicator();
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.success && data.reply) {
+                            const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                            appendMessage("assistant", data.reply, botTime);
+                            conversationHistory.push({ sender: "assistant", text: data.reply, time: botTime });
+                            saveSession();
+                            return;
+                        } else if (data.error === "API_KEY_REQUIRED") {
+                            const fallbackAnswer = queryLocalKnowledge(text);
+                            const guidanceNotice = `${fallbackAnswer}\n\n*(Note: BR06ai is answering from verified portfolio knowledge. To connect live Gemini AI reasoning, set \`GEMINI_API_KEY\` in your environment.)*`;
+                            const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                            appendMessage("assistant", guidanceNotice, botTime);
+                            conversationHistory.push({ sender: "assistant", text: guidanceNotice, time: botTime });
+                            saveSession();
+                            return;
+                        }
+                    }
+
+                    // Fallback to local verified knowledge
+                    const fallbackAnswer = queryLocalKnowledge(text);
+                    const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    appendMessage("assistant", fallbackAnswer, botTime);
+                    conversationHistory.push({ sender: "assistant", text: fallbackAnswer, time: botTime });
+                    saveSession();
+
+                } catch (networkError) {
+                    hideTypingIndicator();
+                    const fallbackAnswer = queryLocalKnowledge(text);
+                    const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    appendMessage("assistant", fallbackAnswer, botTime);
+                    conversationHistory.push({ sender: "assistant", text: fallbackAnswer, time: botTime });
+                    saveSession();
+                } finally {
+                    sendBtn.disabled = false;
+                }
+            }
+
+            chatForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                handleSendMessage();
+            });
+
+            // Delegate suggested chips clicks
+            messagesContainer.addEventListener("click", (e) => {
+                const chip = e.target.closest(".br06ai-chip");
+                if (chip && chip.dataset.question) {
+                    handleSendMessage(chip.dataset.question);
+                }
+            });
+
+            // Restore any session on page load
+            restoreSession();
+        })();
 
 
     </script>

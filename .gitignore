@@ -1,0 +1,15 @@
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.log
+
+# Dependencies & Build
+node_modules/
+.vercel
+dist/
+build/
+
+# OS metadata
+.DS_Store
+Thumbs.db

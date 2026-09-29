@@ -248,6 +248,46 @@
         }
 
 
+        .nav-nexus-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+
+        .nav-nexus-badge {
+            display: inline-block;
+            font-size: 9px;
+            font-family: monospace;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 20px;
+            background: rgba(225, 29, 72, 0.2);
+            color: #fda4af;
+            border: 1px solid rgba(225, 29, 72, 0.45);
+            margin-left: 6px;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+
+        nav a.nav-nexus-link:hover {
+            color: #fda4af;
+        }
+
+
+        @media (max-width: 950px) and (min-width: 751px) {
+            nav ul {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+        }
+
+
         .status {
             color: #999;
 
@@ -453,6 +493,13 @@
         /* =========================
            SECTIONS
         ========================== */
+
+        section,
+        #nexus-ai {
+            scroll-margin-top:
+                90px;
+        }
+
 
         section {
             width:
@@ -698,6 +745,507 @@
 
             font-size:
                 12px;
+        }
+
+
+        /* =========================
+           FEATURED PROJECT - NEXUS AI
+        ========================== */
+
+        .project-featured {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 38px 42px;
+            background:
+                radial-gradient(
+                    ellipse 70% 60% at 50% 0%,
+                    rgba(225, 29, 72, 0.10),
+                    rgba(139, 92, 246, 0.05) 50%,
+                    rgba(8, 8, 12, 0.88) 100%
+                ),
+                var(--card);
+            border: 1px solid rgba(225, 29, 72, 0.32);
+            border-radius: 26px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(225, 29, 72, 0.08);
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .project-featured::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(225, 29, 72, 0.8),
+                rgba(139, 92, 246, 0.8),
+                transparent
+            );
+            pointer-events: none;
+        }
+
+        .project-featured:hover {
+            transform: translateY(-6px);
+            border-color: rgba(225, 29, 72, 0.55);
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.6),
+                0 0 45px rgba(225, 29, 72, 0.16);
+        }
+
+        .featured-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.95fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .featured-category-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            background: rgba(225, 29, 72, 0.14);
+            color: #fda4af;
+            border: 1px solid rgba(225, 29, 72, 0.35);
+        }
+
+        .badge-icon {
+            font-size: 11px;
+            color: #fb7185;
+        }
+
+        .featured-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            background: rgba(34, 197, 94, 0.12);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, 0.32);
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse-live 1.8s infinite;
+        }
+
+        @keyframes pulse-live {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        .featured-title {
+            font-size: clamp(34px, 4.5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .featured-title .brand-gradient {
+            background: linear-gradient(135deg, #ffffff 30%, #fda4af 75%, #f43f5e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .featured-title .brand-suffix {
+            font-size: 0.62em;
+            font-weight: 700;
+            color: #fb7185;
+            letter-spacing: -0.5px;
+        }
+
+        .featured-tagline {
+            font-size: 13px;
+            color: #94a3b8;
+            font-family: monospace;
+            letter-spacing: 0.8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .featured-desc {
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: 15px;
+            margin-bottom: 26px;
+        }
+
+        /* Feature Highlights Grid */
+        .featured-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 13px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 13px;
+            transition: background 0.25s, border-color 0.25s, transform 0.25s;
+        }
+
+        .highlight-item:hover {
+            background: rgba(225, 29, 72, 0.07);
+            border-color: rgba(225, 29, 72, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .highlight-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 7px;
+            background: rgba(225, 29, 72, 0.18);
+            color: #fb7185;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .highlight-text {
+            font-size: 13px;
+            color: #e2e8f0;
+            line-height: 1.35;
+        }
+
+        .highlight-text strong {
+            display: block;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .highlight-text small {
+            display: block;
+            font-size: 11px;
+            color: #94a3b8;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        /* Action Buttons */
+        .featured-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nexus-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 26px;
+            background: linear-gradient(135deg, #be123c, #e11d48);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 22px rgba(225, 29, 72, 0.36);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-nexus-primary:hover {
+            background: linear-gradient(135deg, #e11d48, #f43f5e);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(225, 29, 72, 0.52);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+        }
+
+        .btn-nexus-primary .arrow {
+            font-size: 16px;
+            line-height: 1;
+            transition: transform 0.25s ease;
+        }
+
+        .btn-nexus-primary:hover .arrow {
+            transform: translate(2px, -2px);
+        }
+
+        .btn-nexus-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 22px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-nexus-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           7-STAGE PIPELINE VISUAL
+        ========================== */
+
+        .nexus-pipeline-panel {
+            position: relative;
+            padding: 24px 22px;
+            background: rgba(8, 8, 14, 0.76);
+            border: 1px solid rgba(225, 29, 72, 0.25);
+            border-radius: 20px;
+            backdrop-filter: blur(14px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .nexus-pipeline-panel.pipeline-highlight {
+            border-color: rgba(225, 29, 72, 0.7);
+            box-shadow: 0 0 35px rgba(225, 29, 72, 0.35);
+        }
+
+        .pipeline-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .pipeline-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fda4af;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .pipeline-glow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #e11d48;
+            box-shadow: 0 0 10px #e11d48;
+        }
+
+        .pipeline-count {
+            font-family: monospace;
+            font-size: 10px;
+            padding: 2px 8px;
+            background: rgba(225, 29, 72, 0.15);
+            border: 1px solid rgba(225, 29, 72, 0.32);
+            border-radius: 10px;
+            color: #fecdd3;
+            letter-spacing: 0.5px;
+        }
+
+        .pipeline-progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .pipeline-progress-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #7f1d1d, #be123c, #e11d48, #8b5cf6, #06b6d4);
+            border-radius: 4px;
+            background-size: 200% 100%;
+            animation: gradient-flow 6s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .pipeline-stages-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .pipeline-stage-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            color: inherit;
+            font-family: inherit;
+            text-align: left;
+            width: 100%;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .pipeline-stage-item:hover,
+        .pipeline-stage-item.active {
+            background: rgba(225, 29, 72, 0.12);
+            border-color: rgba(225, 29, 72, 0.38);
+            transform: translateX(4px);
+        }
+
+        .stage-left {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .stage-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            font-family: monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+
+        .pipeline-stage-item:hover .stage-num,
+        .pipeline-stage-item.active .stage-num {
+            background: linear-gradient(135deg, #be123c, #e11d48);
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(225, 29, 72, 0.4);
+        }
+
+        .stage-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .stage-role {
+            font-size: 11px;
+            color: #94a3b8;
+            font-family: monospace;
+        }
+
+        .stage-status {
+            font-size: 10px;
+            font-family: monospace;
+            color: #86efac;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stage-status::before {
+            content: "✓";
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .pipeline-active-detail {
+            margin-top: 14px;
+            padding: 12px 14px;
+            background: rgba(225, 29, 72, 0.07);
+            border: 1px dashed rgba(225, 29, 72, 0.32);
+            border-radius: 11px;
+            font-size: 12px;
+            color: #cbd5e1;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .pipeline-active-detail .stage-detail-icon {
+            color: #fb7185;
+            font-size: 14px;
+            flex-shrink: 0;
+            line-height: 1.3;
+        }
+
+        .pipeline-active-detail strong {
+            color: #fda4af;
+            font-family: monospace;
+        }
+
+        .other-projects-heading {
+            margin: 55px 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .other-projects-heading .sub-label {
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        .other-projects-heading::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
         }
 
 
@@ -1228,6 +1776,63 @@
                     10px;
             }
 
+            .project-featured {
+                padding: 28px 20px;
+                border-radius: 22px;
+            }
+
+            .nexus-pipeline-panel {
+                padding: 18px 15px;
+                border-radius: 16px;
+            }
+
+        }
+
+
+        @media (max-width: 920px) {
+
+            .featured-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .project-featured {
+                padding: 32px 28px;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .featured-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-nexus-primary,
+            .btn-nexus-secondary {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .stage-role {
+                display: none;
+            }
+
+            .pipeline-stages-flow {
+                gap: 5px;
+            }
+
+            .pipeline-stage-item {
+                padding: 7px 10px;
+            }
+
         }
 
     </style>
@@ -1294,6 +1899,12 @@
             <li>
                 <a href="#projects">
                     Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="#nexus-ai" class="nav-nexus-link">
+                    NEXUS AI<span class="nav-nexus-badge">NEW</span>
                 </a>
             </li>
 
@@ -1579,6 +2190,224 @@
             to build.
 
         </h2>
+
+
+        <!-- FEATURED FLAGSHIP PROJECT: NEXUS AI -->
+        <article
+            id="nexus-ai"
+            class="card project-featured"
+            aria-labelledby="nexus-title">
+
+            <div class="featured-layout">
+
+                <!-- LEFT COLUMN: CONTENT & ACTIONS -->
+                <div class="featured-content">
+
+                    <div class="featured-meta">
+
+                        <span class="featured-category-badge">
+                            <span class="badge-icon" aria-hidden="true">⚡</span> AI / BRAND INTELLIGENCE
+                        </span>
+
+                        <span class="featured-status-pill">
+                            <span class="pulse-dot" aria-hidden="true"></span> Live Platform
+                        </span>
+
+                    </div>
+
+
+                    <h3 id="nexus-title" class="featured-title">
+
+                        <span class="brand-gradient">NEXUS</span>
+                        <span class="brand-suffix">AI</span>
+
+                    </h3>
+
+
+                    <div class="featured-tagline">
+                        Autonomous Brand Intelligence Platform
+                    </div>
+
+
+                    <p class="featured-desc">
+                        An AI-powered brand intelligence platform that transforms raw ideas into strategic positioning, brand identities, visual direction, and launch-ready assets.
+                    </p>
+
+
+                    <!-- FEATURE HIGHLIGHTS -->
+                    <div class="featured-highlights" role="list" aria-label="NEXUS AI Key Features">
+
+                        <div class="highlight-item" role="listitem">
+                            <div class="highlight-icon" aria-hidden="true">01</div>
+                            <div class="highlight-text">
+                                <strong>7-stage workflow</strong>
+                                <small>Cognitive pipeline from discovery to launch</small>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item" role="listitem">
+                            <div class="highlight-icon" aria-hidden="true">02</div>
+                            <div class="highlight-text">
+                                <strong>AI-powered brand analysis</strong>
+                                <small>Deep market failure &amp; audience synthesis</small>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item" role="listitem">
+                            <div class="highlight-icon" aria-hidden="true">03</div>
+                            <div class="highlight-text">
+                                <strong>Visual identity generation</strong>
+                                <small>Design briefs, art direction &amp; style tokens</small>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item" role="listitem">
+                            <div class="highlight-icon" aria-hidden="true">04</div>
+                            <div class="highlight-text">
+                                <strong>Brand consistency auditing</strong>
+                                <small>Guardian engine preventing narrative drift</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+                    <div class="featured-actions">
+
+                        <a
+                            href="https://nexus-ai.akshatkumar.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-nexus-primary"
+                            aria-label="Launch NEXUS AI live website in a new tab">
+                            Launch NEXUS AI <span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a
+                            href="#nexus-pipeline"
+                            class="btn-nexus-secondary"
+                            id="explorePipelineBtn"
+                            aria-label="Explore the 7-stage cognitive pipeline">
+                            Explore Project
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN: 7-STAGE PIPELINE VISUAL -->
+                <div class="nexus-pipeline-panel" id="nexus-pipeline" aria-label="NEXUS AI 7-Stage Pipeline Visual">
+
+                    <div class="pipeline-header">
+
+                        <div class="pipeline-title">
+                            <span class="pipeline-glow-dot" aria-hidden="true"></span>
+                            Cognitive Pipeline
+                        </div>
+
+                        <span class="pipeline-count">
+                            7 / 7 STAGES
+                        </span>
+
+                    </div>
+
+
+                    <div class="pipeline-progress-bar" aria-hidden="true">
+                        <div class="pipeline-progress-fill"></div>
+                    </div>
+
+
+                    <!-- INTERACTIVE STAGE FLOW -->
+                    <div class="pipeline-stages-flow" role="tablist" aria-label="Pipeline Stages">
+
+                        <button type="button" class="pipeline-stage-item active" data-stage="0" role="tab" aria-selected="true" tabindex="0">
+                            <div class="stage-left">
+                                <span class="stage-num">01</span>
+                                <span class="stage-name">Discover</span>
+                                <span class="stage-role">Intel</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                        <button type="button" class="pipeline-stage-item" data-stage="1" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="stage-left">
+                                <span class="stage-num">02</span>
+                                <span class="stage-name">Position</span>
+                                <span class="stage-role">Strategy</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                        <button type="button" class="pipeline-stage-item" data-stage="2" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="stage-left">
+                                <span class="stage-num">03</span>
+                                <span class="stage-name">Challenge</span>
+                                <span class="stage-role">Stress-Test</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                        <button type="button" class="pipeline-stage-item" data-stage="3" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="stage-left">
+                                <span class="stage-num">04</span>
+                                <span class="stage-name">Shape</span>
+                                <span class="stage-role">Persona</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                        <button type="button" class="pipeline-stage-item" data-stage="4" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="stage-left">
+                                <span class="stage-num">05</span>
+                                <span class="stage-name">Visualize</span>
+                                <span class="stage-role">Art Direction</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                        <button type="button" class="pipeline-stage-item" data-stage="5" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="stage-left">
+                                <span class="stage-num">06</span>
+                                <span class="stage-name">Guardian</span>
+                                <span class="stage-role">Alignment</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                        <button type="button" class="pipeline-stage-item" data-stage="6" role="tab" aria-selected="false" tabindex="-1">
+                            <div class="stage-left">
+                                <span class="stage-num">07</span>
+                                <span class="stage-name">Launch</span>
+                                <span class="stage-role">GTM Assets</span>
+                            </div>
+                            <span class="stage-status">Ready</span>
+                        </button>
+
+                    </div>
+
+
+                    <!-- ACTIVE STAGE DESCRIPTION BOX -->
+                    <div class="pipeline-active-detail" id="pipelineActiveDetail" role="region" aria-live="polite">
+                        <span class="stage-detail-icon" aria-hidden="true">💡</span>
+                        <div class="stage-detail-content">
+                            <strong id="stageDetailTitle">01 Discover:</strong>
+                            <span id="stageDetailDesc"> Deconstructs raw ideas, problem space, audience profiles, non-negotiables, and strategic goals into structured intelligence.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- OTHER EXPLORATIONS / PROJECTS SUBHEADING -->
+        <div class="other-projects-heading">
+            <span class="sub-label">Other Concepts &amp; Experiments</span>
+        </div>
 
 
         <div class="projects">
@@ -1972,6 +2801,124 @@
 
             }
         );
+
+
+        /* =========================
+           NEXUS AI PIPELINE INTERACTIVITY
+        ========================== */
+
+        const pipelineStages = [
+            {
+                num: "01",
+                name: "Discover",
+                role: "Intel",
+                desc: "Deconstructs raw ideas, problem space, audience profiles, non-negotiables, and strategic goals into structured intelligence."
+            },
+            {
+                num: "02",
+                name: "Position",
+                role: "Strategy",
+                desc: "Establishes sharp market differentiation, strategic divergence vectors, and core value propositions."
+            },
+            {
+                num: "03",
+                name: "Challenge",
+                role: "Stress-Test",
+                desc: "Conducts adversarial stress-testing and red-teaming against market assumptions and competitor clichés."
+            },
+            {
+                num: "04",
+                name: "Shape",
+                role: "Persona",
+                desc: "Formulates brand personality, foundational narrative voice, archetype, and tone of communication."
+            },
+            {
+                num: "05",
+                name: "Visualize",
+                role: "Art Direction",
+                desc: "Generates comprehensive visual direction, typography tokens, color palette systems, and design tokens."
+            },
+            {
+                num: "06",
+                name: "Guardian",
+                role: "Alignment",
+                desc: "Audits collateral across channels and prevents narrative, copy, or visual drift over time."
+            },
+            {
+                num: "07",
+                name: "Launch",
+                role: "GTM Assets",
+                desc: "Synthesizes go-to-market copy, elevator pitches, launch headlines, social cards, and rollout checklists."
+            }
+        ];
+
+        const stageButtons =
+            document.querySelectorAll(
+                ".pipeline-stage-item"
+            );
+
+        const stageDetailTitle =
+            document.getElementById(
+                "stageDetailTitle"
+            );
+
+        const stageDetailDesc =
+            document.getElementById(
+                "stageDetailDesc"
+            );
+
+        const exploreBtn =
+            document.getElementById(
+                "explorePipelineBtn"
+            );
+
+        const pipelinePanel =
+            document.getElementById(
+                "nexus-pipeline"
+            );
+
+        function selectStage(index) {
+            stageButtons.forEach((btn, idx) => {
+                const isActive = idx === index;
+                btn.classList.toggle("active", isActive);
+                btn.setAttribute("aria-selected", isActive ? "true" : "false");
+                btn.setAttribute("tabindex", isActive ? "0" : "-1");
+            });
+
+            if (pipelineStages[index] && stageDetailTitle && stageDetailDesc) {
+                stageDetailTitle.textContent = `${pipelineStages[index].num} ${pipelineStages[index].name}:`;
+                stageDetailDesc.textContent = ` ${pipelineStages[index].desc}`;
+            }
+        }
+
+        stageButtons.forEach((btn, index) => {
+            btn.addEventListener("mouseenter", () => selectStage(index));
+            btn.addEventListener("click", () => selectStage(index));
+            btn.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+                    e.preventDefault();
+                    const next = (index + 1) % stageButtons.length;
+                    stageButtons[next].focus();
+                    selectStage(next);
+                } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+                    e.preventDefault();
+                    const prev = (index - 1 + stageButtons.length) % stageButtons.length;
+                    stageButtons[prev].focus();
+                    selectStage(prev);
+                }
+            });
+        });
+
+        if (exploreBtn && pipelinePanel) {
+            exploreBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                pipelinePanel.scrollIntoView({ behavior: "smooth", block: "center" });
+                pipelinePanel.classList.add("pipeline-highlight");
+                setTimeout(() => {
+                    pipelinePanel.classList.remove("pipeline-highlight");
+                }, 1600);
+            });
+        }
 
 
         /* =========================
